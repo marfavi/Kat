@@ -16,7 +16,6 @@ from helpers.programSelector import (
 from helpers.auth import login
 from helpers.config import getConfig, getConfigUrl
 from commands.archive import archive
-from helpers.sound import losesound, winsound
 from helpers.fileutils import undoBOM
 
 
@@ -76,11 +75,6 @@ def submitCommand(data):
         response = printUntilDone(id, problemName, session)
     except:
         pass
-    if data.get('sound'):
-        if response == Response.Success:
-            winsound()
-        elif response == Response.Failure:
-            losesound()
     if response == Response.Success:
         if data.get('archive'):
             archive(problemName, ".solved/")
@@ -298,4 +292,3 @@ def submitParser(parsers: ArgumentParser):
 def submitFlags(parser):
     parser.add_argument('-a', '--archive', action='store_true', help='Archive the problem on a successful submittion.')
     parser.add_argument('-f', '--force', action='store_true', help='Force a submit of the first detected program file.')
-    parser.add_argument('-s', '--sound', action='store_true', help='Play a sound on successful submittion.')

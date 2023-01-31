@@ -6,7 +6,7 @@ from commands.read import readCommand
 from commands.submit import submitCommand, Response, submitFlags
 from commands.test import testCommand
 
-allowedSubmitOptions = ["archive", "force", "sound"]
+allowedSubmitOptions = ["archive", "force"]
 allowedGetOptions = ["open"]
 
 _HELP_TEXT = """\
